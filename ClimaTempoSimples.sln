@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.2092
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClimaTempoSimples", "ClimaTempoSimples\ClimaTempoSimples.csproj", "{56FDABA3-8744-41B5-BBF4-8D13E63ABA7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{7EA63DDD-E8CC-48EC-A472-99CB0124E685}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{6B9A932E-BA4B-49E2-8D41-A83340449DB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{56FDABA3-8744-41B5-BBF4-8D13E63ABA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56FDABA3-8744-41B5-BBF4-8D13E63ABA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56FDABA3-8744-41B5-BBF4-8D13E63ABA7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA63DDD-E8CC-48EC-A472-99CB0124E685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA63DDD-E8CC-48EC-A472-99CB0124E685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA63DDD-E8CC-48EC-A472-99CB0124E685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA63DDD-E8CC-48EC-A472-99CB0124E685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9A932E-BA4B-49E2-8D41-A83340449DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9A932E-BA4B-49E2-8D41-A83340449DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9A932E-BA4B-49E2-8D41-A83340449DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9A932E-BA4B-49E2-8D41-A83340449DB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
