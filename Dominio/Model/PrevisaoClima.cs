@@ -11,15 +11,16 @@ namespace Dominio.Model
     public class PrevisaoClima
     {
         [Key]
-        public int Id;
+        public int Id { get; set; }
 
         //! Apesar de string, deve ser enumerado
         [Required]
-        [Column("Clima", TypeName = "Varchar(15)")]
-        public string Clima;
+        [Column("Nome", TypeName = "VARCHAR")]
+        [StringLength(15)]
+        public string Clima { get; set; }
 
         [Required]
-        public float TemperaturaMinima;
+        public float TemperaturaMinima { get; set; }
 
         [Required]
         public float TemperaturaMaxima;

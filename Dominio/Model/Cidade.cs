@@ -15,7 +15,8 @@ namespace Dominio.Model
         public int Id { get; set; }
 
         [Required]
-        [Column("Nome", TypeName = "Varchar(200)")]
+        [Column("Nome", TypeName = "VARCHAR")]
+        [StringLength(200)]
         public string Nome { get; set; }
 
         [Required]
