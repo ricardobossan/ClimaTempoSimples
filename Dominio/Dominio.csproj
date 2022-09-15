@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\Clima.cs" />
     <Compile Include="Model\PrevisaoClima.cs" />
     <Compile Include="Model\Cidade.cs" />
     <Compile Include="Model\Estado.cs" />
