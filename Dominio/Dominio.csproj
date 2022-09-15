@@ -46,6 +46,9 @@
     <Compile Include="Model\Cidade.cs" />
     <Compile Include="Model\Estado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IPrevisaoClimaRepository.cs" />
+    <Compile Include="Repository\ICidadeRepository.cs" />
+    <Compile Include="Repository\IEstadoRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

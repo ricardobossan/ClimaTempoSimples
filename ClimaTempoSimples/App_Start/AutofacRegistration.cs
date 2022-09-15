@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using DAL;
+using DAL.Repository;
+using Dominio.Repository;
 
 namespace ClimaTempoSimples.App_Start
 {
@@ -24,6 +22,9 @@ namespace ClimaTempoSimples.App_Start
             builder.Register(c => new Context());
 
             // You can register any other dependencies here
+            builder.RegisterGeneric(typeof(EstadoRepository)).As(typeof(IEstadoRepository));
+            builder.RegisterGeneric(typeof(CidadeRepository)).As(typeof(ICidadeRepository));
+            builder.RegisterGeneric(typeof(PrevisaoClimaRepository)).As(typeof(IPrevisaoClimaRepository));
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();

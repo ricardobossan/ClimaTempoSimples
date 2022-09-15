@@ -323,6 +323,10 @@
       <Project>{6B9A932E-BA4B-49E2-8D41-A83340449DB0}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{7EA63DDD-E8CC-48EC-A472-99CB0124E685}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
