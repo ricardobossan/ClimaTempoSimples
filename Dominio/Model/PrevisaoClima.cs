@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio.Enum;
 
 namespace Dominio.Model
 {
@@ -23,13 +24,13 @@ namespace Dominio.Model
         public float TemperaturaMinima { get; set; }
 
         [Required]
-        public float TemperaturaMaxima;
+        public float TemperaturaMaxima { get; set; }
 
         [Required]
-        public DateTime DataPrevisao;
+        public DateTime DataPrevisao { get; set; }
 
         [Required]
-        public int CidadeId;
-        public Cidade Cidade;
+        public int CidadeId { get; set; }
+        public Cidade Cidade { get; set; }
     }
 }

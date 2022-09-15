@@ -166,6 +166,10 @@
     <Compile Include="Migrations\202209141532476_Initial migration.Designer.cs">
       <DependentUpon>202209141532476_Initial migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209152217296_Corrige entidade PrevisaoClima.cs" />
+    <Compile Include="Migrations\202209152217296_Corrige entidade PrevisaoClima.Designer.cs">
+      <DependentUpon>202209152217296_Corrige entidade PrevisaoClima.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\PrevisaoClimaRepository.cs" />
@@ -185,6 +189,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202209141532476_Initial migration.resx">
       <DependentUpon>202209141532476_Initial migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209152217296_Corrige entidade PrevisaoClima.resx">
+      <DependentUpon>202209152217296_Corrige entidade PrevisaoClima.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
