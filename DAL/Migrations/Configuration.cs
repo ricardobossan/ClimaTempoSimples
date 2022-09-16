@@ -63,7 +63,7 @@ namespace DAL.Migrations
             #endregion
             #region PrevisaoClimas
             int p = 1;
-            int qtDias = 7;
+            int qtDias = 14;
             foreach (var cidade in cidades)
             {
                 for (int d = 1; d <= qtDias; d++)
