@@ -27,5 +27,15 @@ namespace Application.Services
         {
             return _previsaoClimaRepository.GetById(id);
         }
+
+        public IEnumerable<PrevisaoClima> GetHjMax()
+        {
+            return _previsaoClimaRepository.GetHjMax();
+        }
+
+        public IEnumerable<PrevisaoClima> GetHjMin()
+        {
+            return _previsaoClimaRepository.GetHjMin();
+        }
     }
 }

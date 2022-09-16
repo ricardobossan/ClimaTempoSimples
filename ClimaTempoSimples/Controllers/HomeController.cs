@@ -14,10 +14,6 @@ namespace ClimaTempoSimples.Controllers
         private IEstadoService estadoService;
         private ICidadeService cidadeService;
         private IPrevisaoClimaService previsaoClimaService;
-        private IEnumerable<Estado> estados;
-        private IEnumerable<Cidade> cidades;
-
-        //public HomeController() { }
 
         public HomeController(IEstadoService estadoService, ICidadeService cidadeService, IPrevisaoClimaService previsaoClimaService, IEnumerable<Estado> estados)
         {
@@ -28,14 +24,12 @@ namespace ClimaTempoSimples.Controllers
 
         public ActionResult Index()
         {
-            List<Estado> estados = new List<Estado>();
-            estados.Add(new Estado() { Id = 50, Nome = "Espírito Santo" });
-            //_estados = estados;
-            this.estados = this.estadoService.Get();
-            this.cidades = this.cidadeService.Get();
+            ViewBag.HjMax = this.previsaoClimaService.GetHjMax();
+            ViewBag.HjMin = this.previsaoClimaService.GetHjMin();
+            ViewBag.Cidades = this.cidadeService.Get();
             ViewBag.Title = "Home Page";
 
-            return View(this.cidades);
+            return View();
         }
     }
 }

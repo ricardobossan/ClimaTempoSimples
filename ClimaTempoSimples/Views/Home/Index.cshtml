@@ -1,19 +1,50 @@
-﻿@model IEnumerable<Dominio.Model.Cidade>
+﻿@using Dominio.Model
 <div class="jumbotron">
     <h1>Clima Tempo Simples</h1>
 </div>
 <div class="row">
-    <div class="col-md-4">
-        <h2>Cidades mais quentes hoje</h2>
-        @foreach (var cidade in Model)
-        {
-            <p>@Html.DisplayFor(modelItem => cidade.Nome)</p>
-        }
+    <div class="col-md-6">
+        <table class="table">
+            <thead class="bg-primary">
+                <tr>
+                    <th colspan="4" scope="col">Cidades mais quentes hoje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PrevisaoClima p in ViewBag.HjMax)
+                {
+                    <tr>
+                        <th scope="row">@p.Cidade.Nome/@p.Cidade.Estado.UF</th>
+                        <td></td>
+                        <td>Máx @p.TemperaturaMaxima C°</td>
+                        <td>Min @p.TemperaturaMinima C°</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-    <div class="col-md-4">
-        <h2>Cidades mais frias hoje</h2>
+    <div class="col-md-6">
+        <table class="table">
+            <thead class="bg-primary">
+                <tr>
+                    <th colspan="4" scope="col">Cidades mais frias hoje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PrevisaoClima p in ViewBag.HjMin)
+                {
+                    <tr>
+                        <th scope="row">@p.Cidade.Nome/@p.Cidade.Estado.UF</th>
+                        <td></td>
+                        <td>Máx @p.TemperaturaMaxima C°</td>
+                        <td>Min @p.TemperaturaMinima C°</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
     </div>
-    <div class="col-md-12">
-        <h2>Clima para os próximos sete dias na cidade de @ViewBag.Title</h2>
-    </div>
+</div>
+<div class="col-md-12">
+    <h2>Clima para os próximos sete dias na cidade de @ViewBag.Title</h2>
 </div>
