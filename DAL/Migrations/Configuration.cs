@@ -16,6 +16,7 @@ namespace DAL.Migrations
 
         protected override void Seed(DAL.Context context)
         {
+            // TODO: Em produção, comentar o corpo deste método.
             //  This method will be called after migrating to the latest version.
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
