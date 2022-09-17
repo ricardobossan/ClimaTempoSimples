@@ -24,12 +24,30 @@ namespace ClimaTempoSimples.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Home Page";
             ViewBag.HjMax = this.previsaoClimaService.GetHjMax();
             ViewBag.HjMin = this.previsaoClimaService.GetHjMin();
-            ViewBag.Cidades = this.cidadeService.Get();
-            ViewBag.Title = "Home Page";
 
+            IEnumerable<Cidade> cidades = this.cidadeService.Get();
+            
+            ViewBag.Cidades =  new SelectList(cidades, "Id", "Nome");
+            //ViewBag.CidadeSelecionada = "";
+            ViewBag.PrevisaoCity = this.previsaoClimaService.GetChosenCity(1);
+            ViewBag.CidadeSelecionada = cidades.Where(x=>x.Id==1).FirstOrDefault().Nome;
             return View();
         }
+
+
+        [Route("Home/CityChosen/{id}")]
+        public IEnumerable<PrevisaoClima> CityChosen(int id)
+        {
+            IEnumerable<Cidade> cidades = this.cidadeService.Get();
+            IEnumerable<PrevisaoClima> previsaoCity = this.previsaoClimaService.GetChosenCity(id);
+            ViewBag.CidadeSelecionada = cidades.Where(x=>x.Id==id).FirstOrDefault().Nome;
+            ViewBag.PrevisaoCity = previsaoCity;
+            return previsaoCity;
+        }
+
+
     }
 }

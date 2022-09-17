@@ -42,9 +42,54 @@
                 }
             </tbody>
         </table>
-
     </div>
 </div>
-<div class="col-md-12">
-    <h2>Clima para os próximos sete dias na cidade de @ViewBag.Title</h2>
+<div class="pull-right">
+    @Html.DropDownList("cidades", (IEnumerable<SelectListItem>)ViewBag.Cidades, new { @onchange = "callChangefunc(this.value)" })
 </div>
+
+@if (ViewBag.CidadeSelecionada != "")
+{
+    <div class="col-sm-12">
+        <h2 class="text-center">Clima para os próximos sete dias na cidade de @ViewBag.CidadeSelecionada</h2>
+        @foreach (PrevisaoClima p in ViewBag.PrevisaoCity)
+        {
+            <div class="col-sm-2">
+                <table class="table">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th colspan="4" scope="col">@p.DataPrevisao.DayOfWeek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">@p.Cidade.Nome/@p.Cidade.Estado.UF</th>
+                            <td></td>
+                            <td>Máx @p.TemperaturaMaxima C°</td>
+                            <td>Min @p.TemperaturaMinima C°</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+}
+
+<!--<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>-->
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function callChangefunc(val) {
+        $.get("http://localhost:53424/Home/CityChosen/" + val,
+            function (data, textStatus, jqXHR) {
+                alert('status: ' + textStatus + ', data:' + data);
+            },
+            function (data, textStatus, jqXHR) {
+                alert('status: ' + textStatus + ', data: Falha ao consultar cidade');
+            },
+            "json"
+        );
+    }
+</script>

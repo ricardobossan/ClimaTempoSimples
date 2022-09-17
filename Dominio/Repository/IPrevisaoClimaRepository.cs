@@ -10,8 +10,8 @@ namespace Dominio.Repository
     public interface IPrevisaoClimaRepository
     {
         IEnumerable<PrevisaoClima> Get();
-        PrevisaoClima GetById(int id);
         IEnumerable<PrevisaoClima> GetHjMax();
         IEnumerable<PrevisaoClima> GetHjMin();
+        IEnumerable<PrevisaoClima> GetChosenCity(int id);
     }
 }

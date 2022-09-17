@@ -12,6 +12,7 @@ namespace DAL.Repository
 {
     public class PrevisaoClimaRepository : IPrevisaoClimaRepository
     {
+
         private readonly Context _context;
 
         public PrevisaoClimaRepository(Context context)
@@ -21,20 +22,26 @@ namespace DAL.Repository
 
         public IEnumerable<PrevisaoClima> Get()
         {
-            return _context.PrevisaoClimas.Include(c=> c.Cidade.Estado).ToList();
+            return _context.PrevisaoClimas.Include(c => c.Cidade.Estado).ToList();
         }
 
-        public PrevisaoClima GetById(int id)
+        public IEnumerable<PrevisaoClima> GetChosenCity(int id)
         {
-            return _context.PrevisaoClimas.Where(x => x.Id == id).FirstOrDefault();
+            return _context.PrevisaoClimas
+                .Where(x => x.CidadeId == id && DbFunctions.TruncateTime(x.DataPrevisao) >= DbFunctions.TruncateTime(DateTime.Now))
+                .Include(y => y.Cidade.Estado)
+                .ToList()
+                .OrderBy(z => z.DataPrevisao)
+                .Take(7)
+                .ToList();
         }
 
         public IEnumerable<PrevisaoClima> GetHjMax()
         {
             return _context.PrevisaoClimas
-                .Where(c=> DbFunctions.TruncateTime(c.DataPrevisao) == DbFunctions.TruncateTime(DateTime.Now))
-                .Include(c=> c.Cidade.Estado).ToList()
-                .OrderByDescending(p=>p.TemperaturaMaxima)
+                .Where(c => DbFunctions.TruncateTime(c.DataPrevisao) == DbFunctions.TruncateTime(DateTime.Now))
+                .Include(c => c.Cidade.Estado).ToList()
+                .OrderByDescending(p => p.TemperaturaMaxima)
                 .Take(3)
                 .ToList();
         }
@@ -42,10 +49,10 @@ namespace DAL.Repository
         public IEnumerable<PrevisaoClima> GetHjMin()
         {
             return _context.PrevisaoClimas
-                .Where(c=>DbFunctions.TruncateTime(c.DataPrevisao) == DbFunctions.TruncateTime(DateTime.Now))
-                .Include(c=> c.Cidade.Estado)
+                .Where(c => DbFunctions.TruncateTime(c.DataPrevisao) == DbFunctions.TruncateTime(DateTime.Now))
+                .Include(c => c.Cidade.Estado)
                 .ToList()
-                .OrderBy(p=>p.TemperaturaMinima)
+                .OrderBy(p => p.TemperaturaMinima)
                 .Take(3)
                 .ToList();
         }

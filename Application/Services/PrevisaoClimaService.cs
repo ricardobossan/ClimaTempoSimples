@@ -23,9 +23,10 @@ namespace Application.Services
             return _previsaoClimaRepository.Get();
         }
 
-        public PrevisaoClima GetById(int id)
+        public IEnumerable<PrevisaoClima> GetChosenCity(int id)
         {
-            return _previsaoClimaRepository.GetById(id);
+
+            return _previsaoClimaRepository.GetChosenCity(id);
         }
 
         public IEnumerable<PrevisaoClima> GetHjMax()

@@ -10,7 +10,7 @@ namespace Dominio.Services
     public interface IPrevisaoClimaService
     {
         IEnumerable<PrevisaoClima> Get();
-        PrevisaoClima GetById(int id);
+        IEnumerable<PrevisaoClima> GetChosenCity(int id);
         IEnumerable<PrevisaoClima> GetHjMax();
         IEnumerable<PrevisaoClima> GetHjMin();
     }
