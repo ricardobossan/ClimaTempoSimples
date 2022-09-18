@@ -12,3 +12,4 @@
 ## Desenvolvimento
 
 - Design pattern: Hexagonal (Ports and adapters)
+- Fontes: https://www.c-sharpcorner.com/UploadFile/3d39b4/rendering-a-partial-view-and-json-data-using-ajax-in-Asp-Net/

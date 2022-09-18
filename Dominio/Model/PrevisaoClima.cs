@@ -32,5 +32,7 @@ namespace Dominio.Model
         [Required]
         public int CidadeId { get; set; }
         public Cidade Cidade { get; set; }
+        [NotMapped]
+        public string DayOfWeek { get; set; }
     }
 }

@@ -29,23 +29,24 @@ namespace ClimaTempoSimples.Controllers
             ViewBag.HjMin = this.previsaoClimaService.GetHjMin();
 
             IEnumerable<Cidade> cidades = this.cidadeService.Get();
-            
-            ViewBag.Cidades =  new SelectList(cidades, "Id", "Nome");
+
+            ViewBag.Cidades = new SelectList(cidades, "Id", "Nome");
             //ViewBag.CidadeSelecionada = "";
             ViewBag.PrevisaoCity = this.previsaoClimaService.GetChosenCity(1);
-            ViewBag.CidadeSelecionada = cidades.Where(x=>x.Id==1).FirstOrDefault().Nome;
+            ViewBag.CidadeSelecionada = cidades.Where(x => x.Id == 1).FirstOrDefault().Nome;
             return View();
         }
 
 
-        [Route("Home/CityChosen/{id}")]
-        public IEnumerable<PrevisaoClima> CityChosen(int id)
+        // TODO: Mudança no dropdown não renderiza nenhuma diferença, e nem chama alertas do index.cshtml
+        [Route("Home/Index/{id}")]
+        public JsonResult CityChosen(int id)
         {
             IEnumerable<Cidade> cidades = this.cidadeService.Get();
             IEnumerable<PrevisaoClima> previsaoCity = this.previsaoClimaService.GetChosenCity(id);
-            ViewBag.CidadeSelecionada = cidades.Where(x=>x.Id==id).FirstOrDefault().Nome;
+            ViewBag.CidadeSelecionada = cidades.Where(x => x.Id == id).FirstOrDefault().Nome;
             ViewBag.PrevisaoCity = previsaoCity;
-            return previsaoCity;
+            return Json(previsaoCity,JsonRequestBehavior.AllowGet);
         }
 
 

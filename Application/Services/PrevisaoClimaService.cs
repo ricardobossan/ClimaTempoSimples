@@ -25,8 +25,12 @@ namespace Application.Services
 
         public IEnumerable<PrevisaoClima> GetChosenCity(int id)
         {
-
-            return _previsaoClimaRepository.GetChosenCity(id);
+IEnumerable<PrevisaoClima> previsoes =  _previsaoClimaRepository.GetChosenCity(id);
+foreach(PrevisaoClima p in previsoes)
+            {
+                p.DayOfWeek = p.DataPrevisao.DayOfWeek.ToString();
+            }
+            return previsoes;
         }
 
         public IEnumerable<PrevisaoClima> GetHjMax()
