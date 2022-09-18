@@ -1,4 +1,6 @@
-﻿@using Dominio.Model
+﻿<style></style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@using Dominio.Model
 <div class="jumbotron">
     <h1>Clima Tempo Simples</h1>
 </div>
@@ -48,14 +50,8 @@
     @Html.DropDownList("cidades", (IEnumerable<SelectListItem>)ViewBag.Cidades, new { @onchange = "callChangefunc(this.value)" })
 </div>
 
-@if (ViewBag.CidadeSelecionada != "")
-{
-    <div id="prevDias" class="col-sm-12">
-    </div>
-}
-
-<!--script src="~/Scripts/jquery-1.10.2.min.js"></!--script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script-->
+<div id="prevDias" class="col-sm-12">
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -64,34 +60,35 @@
         $.get("http://localhost:53424/Home/Index/" + val,
             function (data, textStatus, jqXHR) {
                 let result = `<h2 class="text-center">Clima para os próximos sete dias na cidade de ${data[0].Cidade.Nome}</h2>`;
-                $.each(data, function (i,item) {
+                $.each(data, function (i, item) {
                     console.log(item);
-                    result += `
-        
-            <div class="col-sm-2">
-                <table class="table">
-                    <thead class="bg-primary">
-                        <tr>
-                            <th colspan="4" scope="col">${item.DayOfWeek}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">${item.Cidade.Nome}/${item.Cidade.Estado.UF}</th>
-                            <td></td>
-                            <td>Máx ${item.TemperaturaMaxima} C°</td>
-                            <td>Min ${item.TemperaturaMinima} C°</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-`
-
-
+                    result +=
+                        `<div class="col-sm-2">
+                            <table class="table">
+                                <thead class="bg-primary">
+                                    <tr>
+                                        <th colspan="4" scope="col">${item.DayOfWeek}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><i class="fa-solid ${item.Clima == 'Tempestuoso' ? 'fa-cloud-bolt' : item.Clima == 'Nublado' ? 'fa-cloud' : item.Clima == 'Chuvoso' ? 'fa-cloud-showers-heavy' : 'fa-sun'}"></i> ${item.Clima}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Máxima: ${item.TemperaturaMaxima} C°</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Minima: ${item.TemperaturaMinima} C°</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> `
                 })
                 $("#prevDias").html(result);
                 console.log(data);
                 //alert('status: ' + textStatus + ', data:' + data);
             });
     }
+
 </script>
+

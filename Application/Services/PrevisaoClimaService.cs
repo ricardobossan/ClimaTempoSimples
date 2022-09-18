@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio.Enum;
 using Dominio.Model;
 using Dominio.Repository;
 using Dominio.Services;
@@ -25,10 +26,10 @@ namespace Application.Services
 
         public IEnumerable<PrevisaoClima> GetChosenCity(int id)
         {
-IEnumerable<PrevisaoClima> previsoes =  _previsaoClimaRepository.GetChosenCity(id);
-foreach(PrevisaoClima p in previsoes)
+            IEnumerable<PrevisaoClima> previsoes = _previsaoClimaRepository.GetChosenCity(id);
+            foreach (PrevisaoClima p in previsoes)
             {
-                p.DayOfWeek = p.DataPrevisao.DayOfWeek.ToString();
+                p.DayOfWeek = Enum.GetName(typeof(Semana), p.DataPrevisao.DayOfWeek);
             }
             return previsoes;
         }
